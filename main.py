@@ -32,9 +32,12 @@ def fill_trailing_spaces(string, length):
 
 wrong_emulator = []
 wrong_assembler = []
+test_case_num = 0
 
 for category in assemblies:
+    test_case_num += len(assemblies[category])
     for assembly in assemblies[category]:
+
         assembly = assembly.split('.')[0]
         print(fill_trailing_spaces(f'{category}/{assembly}', 20), end='')
 
@@ -78,7 +81,7 @@ for category in assemblies:
 
 print()
 if wrong_emulator:
-    print('Wrong emulator test cases:')
+    print(f'Wrong emulator test cases ({len(wrong_emulator)})')
     for x in wrong_emulator:
         print('\t' + x)
 else:
@@ -86,7 +89,7 @@ else:
 
 print()
 if wrong_assembler:
-    print('Wrong assembler test cases:')
+    print(f'Wrong assembler test cases ({len(wrong_assembler)})')
     for x in wrong_assembler:
         print('\t' + x)
 else:
