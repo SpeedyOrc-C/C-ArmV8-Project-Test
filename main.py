@@ -1,16 +1,26 @@
 from os import listdir, system, mkdir
+from os.path import exists
 
 # Get all the assembly files
 
-try:
+if not exists('./solution'):
     mkdir('./solution')
-except FileExistsError:
-    pass
+    print('Please put your assembler and emulator in the solution folder!')
+    exit(1)
 
-try:
+ASSEMBLER_PATH = './solution/assemble'
+EMULATOR_PATH = './solution/emulate'
+
+if not exists(ASSEMBLER_PATH):
+    print('Assembler not found!')
+    exit(1)
+
+if not exists(EMULATOR_PATH):
+    print('Emulator not found!')
+    exit(1)
+
+if not exists('./test/output'):
     mkdir('./test/output')
-except FileExistsError:
-    pass
 
 assemblies = {}
 for category in listdir('./test/assembly'):
@@ -19,9 +29,6 @@ for category in listdir('./test/assembly'):
         mkdir(f'./test/output/{category}')
     except FileExistsError:
         pass
-
-ASSEMBLER_PATH = './solution/assemble'
-EMULATOR_PATH = './solution/emulate'
 
 
 # Run the assembler and emulator on all the assembly files
