@@ -82,22 +82,28 @@ for category in assemblies:
             else:
                 print('O', end='')
         if error_found:
-            print('<<<<<<<<<<')
+            print(' <<<<<<<<<<')
         else:
             print()
 
 print()
-if wrong_emulator:
-    print(f'Wrong emulator test cases ({len(wrong_emulator)})')
-    for x in wrong_emulator:
-        print('\t' + x)
-else:
-    print('Emulator clear!')
 
-print()
-if wrong_assembler:
-    print(f'Wrong assembler test cases ({len(wrong_assembler)})')
-    for x in wrong_assembler:
-        print('\t' + x)
+if not wrong_emulator and not wrong_assembler:
+    print('Congratulations! All test cases passed!')
 else:
-    print('Assembler clear!')
+    if wrong_emulator:
+        print(f'Wrong emulator test cases ({len(wrong_emulator)})')
+        for x in wrong_emulator:
+            print('\t' + x)
+    else:
+        print('Emulator clear!')
+
+    print()
+    if wrong_assembler:
+        print(f'Wrong assembler test cases ({len(wrong_assembler)})')
+        for x in wrong_assembler:
+            print('\t' + x)
+    else:
+        print('Assembler clear!')
+
+exit(0)
